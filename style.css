@@ -361,11 +361,53 @@ li {
     text-decoration: line-through;
     color: gray;
 }
-.about-title{
-    font-size: 3em;
-    margin-bottom: 0px;
+
+
+/* Mission statement section */
+.statement-container {
+    margin-top: 40px;
+    text-align: center;
+    background-color: #8AD6DC; /* Add the background color */
+    padding: 20px; /* Add some padding for better visual appearance */
+    border-radius: 12px;
+}
+
+.about-title {
+    font-size: 2em;
+    color: #333;
+}
+
+.statement {
+    margin-top: 20px;
+    color: #555;
+}
+
+/* Contact info section */
+.contact-info-container {
+    margin-top: 20px;
     text-align: center;
 }
-.contact-header{
-    text-align: center;
+
+.contact-info {
+    margin-top: 20px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-header {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 0;
+}
+
+.contact-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact-info li {
+    /*margin: 10px 0;*/
+    color: #555;
 }
