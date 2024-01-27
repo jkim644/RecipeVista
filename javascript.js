@@ -54,8 +54,21 @@ function enterAllergy(){
      
 }
 function addToAllergyList(allergen){
-    allergy.push(allergen);
-    console.log("I've added " + allergen + " to the allergy array.");
+    const allergenLower = allergen.toLowerCase();
+    if (allergenLower === 'chicken'){
+        allergy.push('chicken breast', 'chicken breasts', 'chicken legs', 'chicken stock', 'chicken stock cube', 'chicken stock concentrate');
+    }
+    else if (allergenLower == 'beef'){
+        allergy.push("beef brisket","beef fillet", "beef gravy", "beef stock", "beef kidney", "beef shin", "beef stock concentrate");
+    }
+    else if(allergenLower == 'pork'){
+        allergy.push('pork chops')
+    }
+    else if(allergenLower == 'citrus' || allergenLower=="orange" || allergenLower =="lemon" || allergenLower =="lime"){
+        allergy.push("lemon", "lemon juice", "lemon zest", "lemons", "orange", "orange zest","orange blossom water","lime");
+    }
+    allergy.push(allergenLower);
+    console.log("I've added " + allergenLower + " to the allergy array. This is array: " + allergy);
 }
 
 function selectedVegan(){
@@ -97,6 +110,7 @@ noDietBtn.addEventListener('click', selectedNone);
 const shoppingList= [];
 
 let validEntrees= ["Beef", "Chicken", "Goat", "Lamb", "Pasta", "Pork", "Seafood"]; //will not include vegan/vegetarian options. only if selected
+
 let invalidEntries= [];
 
 let containsAllergen= false;
@@ -107,42 +121,57 @@ async function getEntree(item1Lock){
         return;
     }
     while(true){
-        let containsAllergen= false; //reset
+        containsAllergen= false; //reset
         try{
             const response= await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
             const data= await response.json(); //an object that has our meal data from api
 
             const category= data.meals[0].strCategory;  //access the category type
+            const mealId = data.meals[0].idMeal;
+
+            console.log("this is category: "  + category);
+            console.log("this is id: " + mealId);
+            
+            
             const youtube = data.meals[0].strYoutube; //gives youtube link
             const recipeName= data.meals[0].strMeal;
             const previewImgSrc = data.meals[0].strMealThumb; //gives us img link
             const instructions= data.meals[0].strInstructions; //instructions
-            const recipeLinkSrc= data.meals[0].strSource; //view original recipe link
             let ingredientsList= []; //to add all ingredients to check for allergen
-            
+            console.log("this is recipe name: " + recipeName);
+
             //add all of the recipe's ingredients to ingredients list (don't add empty entries!)
             for (let i = 1; i <= 20; i++) {
                 const ingredient = data.meals[0][`strIngredient${i}`];
-                if (ingredient !== null && ingredient !== '' && !invalidEntries.includes(ingredient) ) {
+                
+                if (ingredient !== null && ingredient !== '') {
                     ingredientsList.push(ingredient);
-                } else {
+                }
+                else {
                     // Break the loop if there are no more ingredients
                     break;
                 }
-            
             }
 
-            console.log("this is the ingredientsList contents after the first for loop: " +ingredientsList);
+            console.log("this is the ingredientsList for " + recipeName + ": " +ingredientsList);
 
 
             //check if ingredient is an allergen (entered by user)
-            if (allergy.some(allergen => ingredientsList.some(ingredient => ingredient.toLowerCase().includes(allergen)))) {
-                containsAllergen = true;
-                getEntree(item1Lock);
-                break;
-            }
-            
+           // Check if any ingredient is an allergen (entered by user)
+            containsAllergen = false;
+            for (let i = 0; i < ingredientsList.length; i++) {
+                const ingredient = ingredientsList[i].toLowerCase();
+                // Check if any ingredient is an allergen (entered by user)
+                containsAllergen = allergy.includes(ingredient);
 
+                // Check if any allergen is in the ingredientsList
+                if (containsAllergen) {
+                    break;
+                }
+
+            }
+
+            console.log("This is an ingredient list checkpoint: " + ingredientsList);
             //to provide valid recipes that follow the category and do not include allergens:
             if (validEntrees.includes(category) && containsAllergen === false && hasInvalidIngredient == false){
                 //change recipe name:
@@ -161,7 +190,7 @@ async function getEntree(item1Lock){
                     liElement.textContent = ingredient;
 
                     // Apply styles to make li look like a button
-                    liElement.classList.add('btn-ingredient', 'recipe-category');
+                    liElement.classList.add('btn-ingredient');
 
                     // Add click event listener --> user wants to add to shopping cart
                     liElement.addEventListener('click', () => {
@@ -225,10 +254,11 @@ async function getSide(item2Lock) {
             }
 
             // check if ingredient is an allergen (entered by user)
-            if (ingredientsList.includes(allergy)) {
+            if (ingredientsList.some(ingredient => allergy.includes(ingredient))) {
                 containsAllergen = true;
             }
-
+            
+            
             // to provide valid recipes that follow the category and do not include allergens:
             if (validSides.includes(category) && containsAllergen === false && hasInvalidIngredient == false) {
                 // change recipe name:
@@ -248,7 +278,7 @@ async function getSide(item2Lock) {
                     liElement.textContent = ingredient;
 
                     // Apply styles to make li look like a button
-                    liElement.classList.add('btn-ingredient', 'recipe-category');
+                    liElement.classList.add('btn-ingredient');
 
                     // Add click event listener --> user wants to add to shopping cart
                     liElement.addEventListener('click', () => {
@@ -302,9 +332,10 @@ async function getSide2(item3Lock) {
             }
 
             // check if ingredient is an allergen (entered by user)
-            if (ingredientsList.includes(allergy)) {
+            if (ingredientsList.some(ingredient => allergy.includes(ingredient))) {
                 containsAllergen = true;
             }
+            
 
             // to provide valid recipes that follow the category and do not include allergens:
             if (validSides2.includes(category) && containsAllergen === false && hasInvalidIngredient == false) {
@@ -326,7 +357,7 @@ async function getSide2(item3Lock) {
                     liElement.textContent = ingredient;
 
                     // Apply styles to make li look like a button
-                    liElement.classList.add('btn-ingredient', 'recipe-category');
+                    liElement.classList.add('btn-ingredient');
 
                     // Add click event listener --> user wants to add to shopping cart
                     liElement.addEventListener('click', () => {
