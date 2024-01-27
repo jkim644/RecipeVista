@@ -264,9 +264,17 @@ async function getSide(item2Lock) {
                 }
             }
 
-            // check if ingredient is an allergen (entered by user)
-            if (ingredientsList.some(ingredient => allergy.includes(ingredient))) {
-                containsAllergen = true;
+            containsAllergen = false;
+            for (let i = 0; i < ingredientsList.length; i++) {
+                const ingredient = ingredientsList[i].toLowerCase();
+                // Check if any ingredient is an allergen (entered by user)
+                containsAllergen = allergy.includes(ingredient);
+
+                // Check if any allergen is in the ingredientsList
+                if (containsAllergen) {
+                    break;
+                }
+
             }
             
             
@@ -342,11 +350,18 @@ async function getSide2(item3Lock) {
                 }
             }
 
-            // check if ingredient is an allergen (entered by user)
-            if (ingredientsList.some(ingredient => allergy.includes(ingredient))) {
-                containsAllergen = true;
+            containsAllergen = false;
+            for (let i = 0; i < ingredientsList.length; i++) {
+                const ingredient = ingredientsList[i].toLowerCase();
+                // Check if any ingredient is an allergen (entered by user)
+                containsAllergen = allergy.includes(ingredient);
+
+                // Check if any allergen is in the ingredientsList
+                if (containsAllergen) {
+                    break;
+                }
+
             }
-            
 
             // to provide valid recipes that follow the category and do not include allergens:
             if (validSides2.includes(category) && containsAllergen === false && hasInvalidIngredient == false) {
