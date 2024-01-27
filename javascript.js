@@ -67,7 +67,18 @@ function addToAllergyList(allergen){
     else if(allergenLower == 'citrus' || allergenLower=="orange" || allergenLower =="lemon" || allergenLower =="lime"){
         allergy.push("lemon", "lemon juice", "lemon zest", "lemons", "orange", "orange zest","orange blossom water","lime");
     }
-    allergy.push(allergenLower);
+    else if(allergenLower == 'fish'){
+        allergy.push("salmon","fish sauce", "thai fish sauce","white fish","white fish fillets","monkfish", "fish stock","red snapper", "smoked salmon","anchovy fillet","herring","sardines");
+    }
+    else if(allergenLower == 'egg'){
+        allergy.push('egg','eggs','egg white', 'egg yolks','flax eggs','Free-range Egg, Beaten',"Free-range Eggs, Beaten")
+    }
+    else if(allergenLower == 'milk'){
+        allergy.push('cheese slices', 'milk','cheddar cheese','cheese', 'cheese curds','colby jack cheese','cubed feta cheese','gouda cheese','monterery jack cheese','parmesan cheese','shredded mexican cheese','shredded monterey jack cheese','cream cheese','stilton cheese','goats cheese','condensed milk','milk','semi-skimmed milk','whole milk','.butter','brie','single cream', 'double cream');
+    }
+    else if(allergenLower == 'nuts' || allergenLower == 'nut' || allergenLower =='tree nuts'){
+        allergy.push("peanut butter", "peanut oil","peanuts", "peanut cookies", "peanut brittle", "almonds","almond milk","almond extract","flaked almonds","ground almonds", "almonds", "pine nuts","walnuts", "pecan nuts","chestnuts","hazlenuts","cashew nuts");
+    }
     console.log("I've added " + allergenLower + " to the allergy array. This is array: " + allergy);
 }
 
@@ -229,7 +240,7 @@ async function getSide(item2Lock) {
     }
 
     while (true) {
-        let containsAllergen = false; // reset
+        containsAllergen = false; // reset
         try {
             const response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
             const data = await response.json(); // an object that has our meal data from api
