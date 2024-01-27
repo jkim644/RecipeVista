@@ -357,12 +357,6 @@ li {
     font-size: 50px;
 }
 
-.crossed-out{
-    text-decoration: line-through;
-    color: gray;
-}
-
-
 /* Mission statement section */
 .statement-container {
     margin-top: 40px;
@@ -410,4 +404,8 @@ li {
 .contact-info li {
     /*margin: 10px 0;*/
     color: #555;
+}
+.cross{
+    text-decoration: line-through;
+    color: grey;
 }

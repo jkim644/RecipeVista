@@ -413,6 +413,7 @@ function selectMenu(){
     getSide2(item3Lock);
 }
 
+
 function addToShoppingList(ingredient){
     const ulElement = document.querySelector('.grocery-items ul');
     if(shoppingList.includes(ingredient))
@@ -422,15 +423,27 @@ function addToShoppingList(ingredient){
     shoppingList.push(ingredient);
     const liElement = document.createElement('li');
     liElement.textContent = ingredient;
-    let checkBox = document.createElement('input');
+    const checkBox = document.createElement('input');
     checkBox.type = "checkbox";
     liElement.classList.add('shopping-ingredient', 'recipe-category');
 
     ulElement.appendChild(liElement);
     liElement.insertBefore(checkBox,liElement.firstChild);
+
+    checkBox.addEventListener('click', function(){ //has checkbox been clicked?
+        strikethrough(checkBox); //pass in check box so usable in strikethrough function
+    });
 }
 
-
+function strikethrough(checkBox){
+    if (checkBox.checked){ 
+        checkBox.parentElement.classList.add('cross'); //strikethrough and font color change when clicked
+    }
+    else{
+        checkBox.parentElement.classList.remove('cross'); //removes text deco if unclicked
+    }
+    
+}
 
 const recipeBtn= document.querySelector('.btn-recipe');
 recipeBtn.addEventListener('click', showDirections);
