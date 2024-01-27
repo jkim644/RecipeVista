@@ -1,1 +1,145 @@
 
+.slot-machine-body{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#DCAF8A;
+    border-radius: 12px;
+    margin: 40px 25px 20px 25px;
+    width:100%;
+    width: auto;
+    min-height: 750px;
+}
+.slot-machine-screen{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap:10px;
+    background-color: #8AD6DC;
+    margin: 10px;
+    padding: 30px 40px;
+    border-radius:12px;
+    width: 85%;   
+}
+
+/* rows hold the food selection, lock is the button to lock in option*/
+.row-1, .row-2, .row-3, .lock-1, .lock-2, .lock-3{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing:border-box;
+    background-color: rgb(240, 236, 237);
+    border-radius: 12px;
+    padding: 5px 10px;
+    overflow:hidden;
+}
+
+/* change the height of grid items based on type*/
+.row-1, .row-2, .row-3{
+    height:auto;
+}
+
+
+/* edit the properties of the image preview div*/
+.img-preview {
+    height: 250px;   
+}
+.img-preview img{
+    max-height: 250px;
+    min-height: 150px;
+    min-width: 100%;
+    border-radius:12px;
+}
+/* for the button that will initialize selection*/
+.spin-container{
+    height: 100px;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+.spin-container button{
+    border-radius: 50%;
+    background-color: red;
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+    color:white;
+    text-transform: uppercase;
+    font-size: 19px;
+    font-weight: 670;
+    letter-spacing: 0.1cap;
+    text-decoration:none;
+    cursor:pointer;
+    background: linear-gradient(45deg, #3498db, #217dbb);
+    box-shadow: 3px 3px 5px #888888, -3px -3px 5px #fff;
+}
+.main-title h1{
+    text-align: center;
+    font-size: 42px;
+}
+
+.allergy-container, .diet-container{
+    display:flex;
+    align-items: center;
+    justify-content: left;
+}
+.allergy-txt{
+    width:300px;
+    height: 30px;
+    margin: 5px 15px;
+    border-radius:12px;
+    padding: 5px;
+    font-size: 15px;
+}
+.vegan, .vegetarian{
+    margin: 5px 20px;
+}
+
+.btn-vegan, .btn-vegetarian, .btn-allergy, .btn-none{
+    border-radius: 12px;
+    padding: 8px 15px;
+    font-size: 19px;
+    color: white;
+    background-color: rgb(65, 216, 65);
+}
+.btn-allergy{
+    background-color: #217dbb;
+}
+
+.diet-main-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 650px) {
+    .slot-machine-screen {
+        grid-template-columns: 1fr; /* Display as a single column */
+        width: 90%; /* Adjust the width as needed */
+        margin: 0 auto; /* Center the screen */
+        padding: 10px; /* Adjust padding as needed */
+      
+    }
+  
+    .row-1, .row-2, .row-3, .lock-1, .lock-2, .lock-3 {
+      height: auto; /* Let the height adjust based on content */
+    }
+    .allergy-container, .diet-container{
+        display:flex;
+        align-items: center;
+        justify-content:center;
+        flex-direction: column;
+    }
+    .vegan, .vegetarian{
+        margin: 3px;
+    }
+    
+    
+    
+  
+    /* You can add more specific styling for smaller screens as needed */
+  }

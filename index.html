@@ -4,10 +4,106 @@
     <title>RecipeVista</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
+    <link href="/SheCodes/RecipeVista/style.css" rel="stylesheet">
   </head>
   <body>
-    <h1>RecipeVista</h1>
-
-    <a>href="link"</a>
+    <div class="main-container">
+      <div class="main-title">
+        <h1>Main Title</h1>
+      </div>
+      <div class="diet-main-container">
+        <div class="dietary-title">
+          <h2>Enter Dietary Restrictions:</h2>
+        </div>
+        <div class="allergy-container">
+          <div class="title">
+            <h3>Allergies: </h3>
+          </div>
+          <div class="text-input">
+            <input type="text" class="allergy-txt" placeholder="Enter Allergy Here" autofocus>
+          </div>
+          <div class="submit-allergy">
+            <button class="btn-allergy" onclick="enterAllergy()">Add Allergy</button>
+          </div>
+        </div>
+        <div class="diet-container">
+          <div class="title">
+            <h3>Dietary Restriction: </h3>
+          </div>
+          <div class="vegan">
+            <button class="btn-vegan" onclick="selectedVegan()">Vegan</button>
+          </div>
+          <div class="vegetarian">
+            <button class="btn-vegetarian" onclick="selectedVegetarian()">Vegetarian</button>
+          </div>
+          <div class="none">
+            <button class="btn-none" onclick="selectedNone()">None</button>
+          </div>
+        </div>
+      </div>
+      <div class="slot-machine-body">
+        <div class="slot-machine-screen">
+          <div class="row-1">
+            <div class="title">
+              <h1 id="row-1-title">Row 1</h1>
+            </div>
+            <div class="img-preview">
+              <img src="https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg">
+            </div>
+            <div class="ingredients">
+              <div class="ing-title"><h2>Ingredients</h2></div>
+              <ul>
+                <li>Item 1</li>
+              </ul>
+            </div>
+            <div class="lock-1">
+              <button class="btn-lock" id="btn-1">Lock 1</button>
+            </div>
+          </div>
+          <div class="row-2">
+            <div class="title">
+              <h1 id="row-2-title">Row 2</h1>
+            </div>
+            <div class="img-preview">
+              <img src="https://tastesbetterfromscratch.com/wp-content/uploads/2023/12/Twice-Baked-Potatoes-1-400x400.jpg">
+            </div>
+            <div class="ingredients">
+              <div class="ing-title"><h2>Ingredients</h2></div>
+              <ul>
+                <li>Item 1</li>
+              </ul>
+            </div>
+            <div class="lock-2">
+              <button class="btn-lock" id="btn-2">Lock 2</button>
+            </div>
+          </div>
+          <div class="row-3">
+            <div class="title">
+              <h1 id="row-3-title">Row 3</h1>
+            </div>
+            <div class="img-preview">
+              <img src="https://www.thecookierookie.com/wp-content/uploads/2023/04/air-fryer-asparagus-recipe-2-650x845.jpg">
+            </div>
+            <div class="ingredients">
+              <div class="ing-title"><h2>Ingredients</h2></div>
+              <ul>
+                <li>Item 1</li>
+              </ul>
+            </div>
+            <div class="lock-3">
+              <button class="btn-lock" id="btn-3">Lock 3</button>
+            </div>
+          </div>
+        
+        </div> <!--slot machine screen end-->
+        
+      </div>  <!--slot machine body end-->
+      <div class="spin-container">
+        <div class="spin">
+          <button class="btn-spin">Spin</button>
+        </div>
+      </div>
+    </div> <!--main container-->
+  <script src="/SheCodes/RecipeVista/javascript.js"></script>
   </body>
 </html>
