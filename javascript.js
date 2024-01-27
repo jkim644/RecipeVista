@@ -93,18 +93,9 @@ noDietBtn.addEventListener('click', selectedNone);
 
 //shopping list:
 const shoppingList= [];
-let validEntrees =[];
-let invalidEntries = [];
-//get an entree --> valid categories depend on dietary restriction selection:
-if (isVegetarian){
-    validEntrees = ["Vegetarian"]
-    invalidEntries =["Beef","Chicken", "Goat", "Lamb","Pork", "Seafood", "Meat"];
-}
 
-else{
-    validEntrees= ["Beef", "Chicken", "Goat", "Lamb", "Pasta", "Pork", "Seafood"]; //will not include vegan/vegetarian options. only if selected
-    invalidEntries = [];
-}
+let validEntrees= ["Beef", "Chicken", "Goat", "Lamb", "Pasta", "Pork", "Seafood"]; //will not include vegan/vegetarian options. only if selected
+let invalidEntries= [];
 
 let containsAllergen= false;
 let hasInvalidIngredient = false;
@@ -136,11 +127,6 @@ async function getEntree(item1Lock){
                     break;
                 }
             
-                // Check if any part of the ingredient includes an entry from invalidEntries
-                if (invalidEntries.some(entry => ingredient.toLowerCase().includes(entry.toLowerCase()))) {
-                    hasInvalidIngredient = true;
-                    continue; // Skip to the next iteration if an invalid ingredient is found
-                }
             }
             
             
@@ -194,11 +180,93 @@ async function getEntree(item1Lock){
     }
 }
 
+let validSides = ["Side"];
+
+async function getSide(item2Lock) {
+    if (item2Lock) {
+        return;
+    }
+
+    while (true) {
+        let containsAllergen = false; // reset
+        try {
+            const response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+            const data = await response.json(); // an object that has our meal data from api
+
+            const category = data.meals[0].strCategory;  // access the category type
+            const youtube = data.meals[0].strYoutube; // gives youtube link
+            const recipeName = data.meals[0].strMeal;
+            const previewImgSrc = data.meals[0].strMealThumb; // gives us img link
+            const instructions = data.meals[0].strInstructions; // instructions
+            const recipeLinkSrc = data.meals[0].strSource; // view original recipe link
+            let ingredientsList = []; // to add all ingredients to check for allergen
+
+            // add all of the recipe's ingredients to ingredients list (don't add empty entries!)
+            for (let i = 1; i <= 20; i++) {
+                const ingredient = data.meals[0][`strIngredient${i}`];
+                if (ingredient !== null && ingredient !== '' && !invalidEntries.includes(ingredient)) {
+                    ingredientsList.push(ingredient);
+                } else {
+                    // Break the loop if there are no more ingredients
+                    break;
+                }
+            }
+
+            // check if ingredient is an allergen (entered by user)
+            if (ingredientsList.includes(allergy)) {
+                containsAllergen = true;
+            }
+
+            // to provide valid recipes that follow the category and do not include allergens:
+            if (validSides.includes(category) && containsAllergen === false && hasInvalidIngredient == false) {
+                // change recipe name:
+                document.getElementById('row-2-title').textContent = recipeName;
+
+                // change recipe picture:
+                const sideImgPreview = document.querySelector('.row-2 .img-preview img');
+                sideImgPreview.src= previewImgSrc;
+
+                // add ingredients to li: (with add button)
+                console.log(ingredientsList);
+                const ulElement = document.querySelector('.row-2 ul'); // Assuming you have a <ul> element in your HTML for row-2
+                ulElement.innerHTML = ''; // clear previous ingredients
+
+                // cycle through each ingredient and add to unordered list (with added classes to get proper formatting)
+                ingredientsList.forEach(ingredient => {
+                    const liElement = document.createElement('li');
+                    liElement.textContent = ingredient;
+
+                    // Apply styles to make li look like a button
+                    liElement.classList.add('btn-ingredient', 'recipe-category');
+
+                    // Add click event listener --> user wants to add to shopping cart
+                    liElement.addEventListener('click', () => {
+                        addToShoppingList(ingredient);
+                        alert(`Added ${ingredient} to your shopping list!`);
+                    });
+
+                    // Append the li element to your existing ul element
+                    ulElement.appendChild(liElement);
+                });
+
+                break;
+            }
+
+        } catch (error) {
+            console.error('Error fetching random meal: ', error);
+        }
+    }
+}
+
+// ... (rest of your code)
+
+
+
 spinBtn.addEventListener('click', selectMenu);
 
 function selectMenu(){
     getEntree(item1Lock);
-    //getSide(item2Lock);
+    getSide(item2Lock);
     //getSide2(item3Lock);
 }
 function addToShoppingList(ingredient){

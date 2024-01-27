@@ -46,7 +46,7 @@
     height: 250px;   
 }
 .img-preview img{
-    max-height: 250px;
+    max-height: 100%;
     min-height: 150px;
     min-width: 100%;
     border-radius:12px;
@@ -253,4 +253,15 @@ li {
     color:black;
     margin: 3px;
     cursor:pointer;
+}
+
+.ingredients{
+    height: 400px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.ingredients ul{
+    overflow:hidden;
+    text-overflow: ellipsis;
 }
