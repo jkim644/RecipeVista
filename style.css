@@ -141,14 +141,14 @@
 @media screen and (max-width: 650px) {
     .slot-machine-screen {
         grid-template-columns: 1fr; /* Display as a single column */
-        width: 90%; /* Adjust the width as needed */
+        width: 90%; 
         margin: 0 auto; /* Center the screen */
-        padding: 10px; /* Adjust padding as needed */
+        padding: 10px; 
       
     }
   
     .row-1, .row-2, .row-3, .lock-1, .lock-2, .lock-3 {
-      height: auto; /* Let the height adjust based on content */
+      height: auto; 
     }
     .allergy-container, .diet-container{
         display:flex;
@@ -159,9 +159,98 @@
     .vegan, .vegetarian{
         margin: 3px;
     }
-    
-    
-    
-  
-    /* You can add more specific styling for smaller screens as needed */
   }
+
+  /* for the recipe preview window*/
+.recipe-details{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    color:#fff;
+    background-color:#217dbb;
+    border-radius: 1rem;
+    width: 90%;
+    height:90%;
+    overflow-y:scroll;
+    display: none;
+    padding: 15px 0;
+    text-align:center;
+}
+.recipe-details::-webkit-scrollbar{
+    width: 10px;
+}
+.recipe-details::-webkit-scrollbar-thumb{
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+.recipe-content{
+    margin: 10px;
+}
+.btn-close{
+   position:absolute;
+   right: 30px;
+   top:30px;
+   font-size: 30px;
+   background-color: #fff;
+   border:none;
+   width: 35px;
+   height: 35px;
+   border-radius: 50px;
+   display:flex; 
+   justify-content: center;
+   align-items: center;
+   opacity: 0.9;
+}
+.recipe-title{
+    padding-bottom:10px;
+}
+.recipe-category, li{
+    background-color: #fff;
+    font-weight:600;
+    color:#217dbb;
+    display:inline-block;
+    padding: 5px 8px;
+    border-radius: 7px;
+}
+
+.recipe-directions{
+    padding: 8px 0;
+}
+
+.recipe-link{
+    margin: 15px 0;
+}
+.recipe-link a{
+    color:#fff;
+    font-size: 29px;
+    font-weight:700;
+    transition: all 0.4 linear;
+}
+.recipe-link a:hover{
+    opacity: 0.7;
+}
+.recipe-content{
+    padding:15px 0;
+}
+
+/* Style for the list */
+ul {
+    list-style-type: none; 
+    padding: 0; 
+}
+
+/* Style for list items */
+li {
+    display: flex; 
+    align-items: center; 
+    margin: 3px;
+}
+
+.btn-ingredient{
+    display:inline-block; 
+    color:black;
+    margin: 3px;
+    cursor:pointer;
+}
