@@ -304,7 +304,6 @@ li {
     cursor:pointer;
 }
 
-<<<<<<< HEAD
 .shopping-ingredient{
     border-radius: 12px;
     padding: 8px 15px;
@@ -318,8 +317,6 @@ li {
     box-shadow: 3px 3px 5px #888888, -3px -3px 5px #fff;
 }
 
-=======
->>>>>>> 7dbf9fafa23b3388084647480d212c3c20f33460
 .ingredients{
     height: auto;
     padding: 10px;
@@ -340,6 +337,7 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .grocery-title {
@@ -356,11 +354,8 @@ li {
 .grocery-container h1{
     font-size: 50px;
 }
-<<<<<<< HEAD
 
 .crossed-out{
     text-decoration: line-through;
     color: gray;
 }
-=======
->>>>>>> 7dbf9fafa23b3388084647480d212c3c20f33460

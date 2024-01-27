@@ -98,6 +98,10 @@ const shoppingList= [];
 
 let validEntrees= ["Beef", "Chicken", "Goat", "Lamb", "Pasta", "Pork", "Seafood"]; //will not include vegan/vegetarian options. only if selected
 let invalidEntries= [];
+let nonVeganIngredients = ["Chicken","Salmon","Beef","Pork","Bacon","Beef Brisket","Beef Fillet", 
+                            "Beef Gravy","Beef Stock","Butter","Cheddar Cheese", "Cheese","Cheese Curds",
+                          "Chicken Breast","Chicken Breasts","Chicken Legs","Chicken Stock", "Chicken Thighs",
+                        "Chilled Butter","Christmas Pudding","Colby Jack Cheese", "Condensed Milk",]
 
 let containsAllergen= false;
 let hasInvalidIngredient = false;
