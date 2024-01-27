@@ -7,7 +7,6 @@ const allergyBtn= document.querySelector('.btn-allergy');
 const veganBtn = document.querySelector('.btn-vegan');
 const vegetarianBtn = document.querySelector('.btn-vegetarian');
 const noDietBtn = document.querySelector('.btn-none');
-const closeBtn= document.querySelector('.btn-close');
 const recipeContentBox = document.querySelector('.recipe-content');
 
 
@@ -34,7 +33,8 @@ function lockSide2(){
     item3Lock=true;
 }
 lock1Btn.addEventListener('click', lockEntree);
-
+lock2Btn.addEventListener('click', lockSide);
+lock3Btn.addEventListener('click', lockSide2);
 
 //adds allergy to list --> changes hasAllergy to true
 function enterAllergy(){
@@ -349,8 +349,15 @@ function addToShoppingList(ingredient){
     shoppingList.push(ingredient);
 }
 
+
+const recipeBtn= document.querySelector('.btn-recipe');
+recipeBtn.addEventListener('click', showDirections);
+
+const closeBtn = document.getElementById('btn-close');
+closeBtn.addEventListener('click', hideDirections);
+
 function showDirections(){
-    document.querySelector('.recipe-details').style.display="block";
+    document.querySelector('.recipe-details').style.display="block";  
 }
 
 function hideDirections(){

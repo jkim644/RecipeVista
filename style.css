@@ -133,6 +133,7 @@
     margin: 10px;
     border:none;
     box-shadow: 3px 3px 5px #888888, -3px -3px 5px #fff;
+    cursor:pointer;
 }
 .btn-lock{
     background-color: rgb(248, 52, 52);
@@ -203,6 +204,7 @@
    justify-content: center;
    align-items: center;
    opacity: 0.9;
+   cursor:pointer;
 }
 .recipe-title{
     padding-bottom:10px;
@@ -269,4 +271,15 @@ li {
 
 .ingredients.expanded{
     height: 400px;
+}
+
+.grocery-container{
+    margin-top: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grocery-container h1{
+    font-size: 50px;
 }
