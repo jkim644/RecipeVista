@@ -361,3 +361,11 @@ li {
     text-decoration: line-through;
     color: gray;
 }
+.about-title{
+    font-size: 3em;
+    margin-bottom: 0px;
+    text-align: center;
+}
+.contact-header{
+    text-align: center;
+}
