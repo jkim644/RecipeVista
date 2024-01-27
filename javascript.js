@@ -51,12 +51,11 @@ function enterAllergy(){
         console.log("Allergen: " + allergy);
         hasAllergy = true;
     }
-    else{ //doesn't type anything, but hits button
-        hasAllergy =false;
-    }  
+     
 }
 function addToAllergyList(allergen){
     allergy.push(allergen);
+    console.log("I've added " + allergen + " to the allergy array.");
 }
 
 function selectedVegan(){
@@ -104,6 +103,7 @@ let containsAllergen= false;
 let hasInvalidIngredient = false;
 async function getEntree(item1Lock){
     if (item1Lock){
+        console.log("Entree is locked. Will not randomly gather new recipe");
         return;
     }
     while(true){
@@ -131,14 +131,17 @@ async function getEntree(item1Lock){
                 }
             
             }
-            
-            
-            
+
+            console.log("this is the ingredientsList contents after the first for loop: " +ingredientsList);
+
 
             //check if ingredient is an allergen (entered by user)
-            if (ingredientsList.includes(allergy)){
-                containsAllergen= true;
+            if (allergy.some(allergen => ingredientsList.some(ingredient => ingredient.toLowerCase().includes(allergen)))) {
+                containsAllergen = true;
+                getEntree(item1Lock);
+                break;
             }
+            
 
             //to provide valid recipes that follow the category and do not include allergens:
             if (validEntrees.includes(category) && containsAllergen === false && hasInvalidIngredient == false){
@@ -149,7 +152,6 @@ async function getEntree(item1Lock){
                 document.querySelector('.img-preview img').src= previewImgSrc;
                 
                 //add ingredients to li: (with add button)
-                console.log(ingredientsList);
                 const ulElement = document.querySelector('ul'); // Assuming you have a <ul> element in your HTML
                 ulElement.innerHTML = ''; //clear previous ingredients
                 
@@ -177,7 +179,8 @@ async function getEntree(item1Lock){
                 document.querySelector('.recipe-category').textContent= category;
                 document.querySelector('.recipe-directions p').textContent= instructions;
                 document.querySelector('.recipe-link a').href= youtube;
-
+               
+                
                 break;
             }
             
@@ -236,7 +239,6 @@ async function getSide(item2Lock) {
                 sideImgPreview.src= previewImgSrc;
 
                 // add ingredients to li: (with add button)
-                console.log(ingredientsList);
                 const ulElement = document.querySelector('.row-2 ul'); // Assuming you have a <ul> element in your HTML for row-2
                 ulElement.innerHTML = ''; // clear previous ingredients
 
@@ -314,7 +316,7 @@ async function getSide2(item3Lock) {
                 sideImgPreview.src= previewImgSrc;
 
                 // add ingredients to li: (with add button)
-                console.log(ingredientsList);
+                
                 const ulElement = document.querySelector('.row-3 ul'); // Assuming you have a <ul> element in your HTML for row-2
                 ulElement.innerHTML = ''; // clear previous ingredients
 
