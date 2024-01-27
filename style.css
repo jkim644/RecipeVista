@@ -104,6 +104,8 @@
     font-size: 19px;
     color: white;
     background-color: rgb(65, 216, 65);
+    box-shadow: 3px 3px 5px #888888, -3px -3px 5px #fff;
+    border:none;
 }
 .btn-allergy{
     background-color: #217dbb;
@@ -115,6 +117,26 @@
     align-items: center;
     justify-content: center;
 }
+.lock-1, .lock-2, .lock-3{
+    flex-direction: row;
+
+}
+.btn-recipe, .btn-lock{
+    border-radius: 12px;
+    padding: 8px 15px;
+    font-size: 16px;
+    color: white;
+    background-color: rgb(65, 216, 65);
+    text-decoration: none;
+    display:inline-block;
+    margin: 10px;
+    border:none;
+    box-shadow: 3px 3px 5px #888888, -3px -3px 5px #fff;
+}
+.btn-lock{
+    background-color: rgb(248, 52, 52);
+}
+
 
 @media screen and (max-width: 650px) {
     .slot-machine-screen {
