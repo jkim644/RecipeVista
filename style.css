@@ -263,7 +263,7 @@ li {
     padding: 8px 15px;
     font-size: 16px;
     color: white;
-    background-color: rgb(65, 216, 65);
+    background-color: #217dbb;
     text-decoration: none;
     display:block;
     margin: 10px;
@@ -294,6 +294,22 @@ li {
     flex-direction: column;
 }
 
+.grocery-title {
+    margin-bottom:0;
+}
+.grocery-items{
+    margin-top: 0;
+}
+.grocery-margin{
+    margin-top:0px;
+    margin-bottom: 0px;
+}
+
 .grocery-container h1{
     font-size: 50px;
+}
+
+.crossed-out{
+    text-decoration: line-through;
+    color: gray;
 }

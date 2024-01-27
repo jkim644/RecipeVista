@@ -358,6 +358,10 @@ function selectMenu(){
 
 function addToShoppingList(ingredient){
     const ulElement = document.querySelector('.grocery-items ul');
+    if(shoppingList.includes(ingredient))
+    {
+        return;
+    }
     shoppingList.push(ingredient);
     const liElement = document.createElement('li');
     liElement.textContent = ingredient;
@@ -370,11 +374,14 @@ function addToShoppingList(ingredient){
 }
 
 
+
 const recipeBtn= document.querySelector('.btn-recipe');
 recipeBtn.addEventListener('click', showDirections);
 
 const closeBtn = document.getElementById('btn-close');
 closeBtn.addEventListener('click', hideDirections);
+
+
 
 function showDirections(){
     document.querySelector('.recipe-details').style.display="block";  
