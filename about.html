@@ -1,103 +1,53 @@
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <style>
-        #nav_bar h1 {
-            float: left;
-            margin-left: 10px;
-            color: rgb(32, 88, 193)
-        }
-
-        #nav_bar ul {
-            float: right;
-            margin: 30px;
-        }
-
-        #nav_bar li {
-            display: inline;
-            text-decoration: none;
-            font-size: 20px;
-            margin: 10px;
-        }
-
-        #nav_bar a {
-            color: rgb(32, 88, 193);
-        }
-
-        #information {
-            clear:both;
-            text-align: center;
-            padding: 10px;
-            margin-left: 10%;
-            margin-right: 10%;
-            line-height: 1.5;
-            font-size: 20px;
-        }
-
-        /* Media Queries (aka Responsive Web Page) */
-        @media screen and (max-width: 700px) {
-            #nav_bar h1 {
-                float: none;
-                text-align: center;
-                margin-top: 20px;
-                clear: both;
-                color: rgb(32, 88, 193)
-            }
-
-            #nav_bar ul {
-                float: none;
-                clear: left;
-                text-align: center;
-            }
-
-        }
-
-        @media screen and (max-width: 480px) {
-            #nav_bar h1 {
-                font-size: 25px;
-                text-align: center;
-            }
-
-            #nav_bar ul {
-                float: none;
-                clear: left;
-                text-align: center;
-            }
-
-            #nav_bar a {
-                font-size: 20px;
-                display: block;
-                line-height: 1.5;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <div id="nav_bar">
-            <h1 class="location">About Amazion</h1>
-            <nav>
-                <ul id="nav_links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                </ul>
-            </nav>
+  <head>
+    <link rel="icon" type="image/x-icon" href="photo/favicon.png" />
+    <title>RecipeVista</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="main-title">
+        <a href="index.html"
+          ><img src="photo/logo.png" alt="RecipeVista" id="logo_img"
+        /></a>
+        <div class="dropdown">
+          <button class="dropbtn">Menu</button>
+          <div class="dropdown-content">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+          </div>
         </div>
-    </header>
-
-    <div id="information">
-        <p>Welcome to Amazion, your premier destination for cutting-edge home 
-            electronics. At Amazion, we believe technology should enhance 
-            and simplify your everyday life, and we are passionate about providing you 
-            with the latest and most innovative products to transform your home into a 
-            smart, connected haven. We strive to meet all your needs and exceed your expectations
-            with our broad range of products and services. Join us on this exciting journey as we redefine the way you experience technology
-            in the comfort of your own home.</p>
+      </div>
+      <div class="statement-container">
+        <div class="title">
+          <h2 class="about-title">Our Mission</h2>
+        </div>
+        <div class="statement">
+          <p>
+            Welcome to RecipeVista, where innovation meets Culinary Exploration!
+            Our mission is to inspire your adventures in the kitchen by
+            providing a diverse selection of recipes at the touch of your
+            finger. Whether you're a seasoned professional, a cooking
+            enthusiast, or just not sure what to make for dinner, our goal is to
+            help you spark inspiration in your meals. With our interface you can
+            easily generate a full course meal to eat as well as a customizable
+            grocery list.
+          </p>
+        </div>
+      </div>
+      <div class="contact-info-container">
+        <div class="contact-info">
+          <h2 class="contact-header">Contact the Team</h2>
+          <ul>
+            <li>arc249@pitt.edu</li>
+            <li>hak199@pitt.edu</li>
+            <li>jhk52@pitt.edu</li>
+          </ul>
+        </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

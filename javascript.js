@@ -397,9 +397,24 @@ function selectMenu(){
     getSide(item2Lock);
     getSide2(item3Lock);
 }
+
 function addToShoppingList(ingredient){
+    const ulElement = document.querySelector('.grocery-items ul');
+    if(shoppingList.includes(ingredient))
+    {
+        return;
+    }
     shoppingList.push(ingredient);
+    const liElement = document.createElement('li');
+    liElement.textContent = ingredient;
+    let checkBox = document.createElement('input');
+    checkBox.type = "checkbox";
+    liElement.classList.add('shopping-ingredient', 'recipe-category');
+
+    ulElement.appendChild(liElement);
+    liElement.insertBefore(checkBox,liElement.firstChild);
 }
+
 
 
 const recipeBtn= document.querySelector('.btn-recipe');
@@ -407,6 +422,8 @@ recipeBtn.addEventListener('click', showDirections);
 
 const closeBtn = document.getElementById('btn-close');
 closeBtn.addEventListener('click', hideDirections);
+
+
 
 function showDirections(){
     document.querySelector('.recipe-details').style.display="block";  
