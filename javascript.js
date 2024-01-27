@@ -22,6 +22,9 @@ let noDiet = false;
 let hasAllergy= false;
 let allergy =[];
 
+//for getting recipes
+let item1= [];
+
 //locks in the option
 function lockEntree(){
     item1Lock = true;
@@ -169,6 +172,11 @@ async function getEntree(item1Lock){
                     ulElement.appendChild(liElement);
                 });
                 
+                //for the recipe details page:
+                document.querySelector('.recipe-details .recipe-title').textContent= recipeName;
+                document.querySelector('.recipe-category').textContent= category;
+                document.querySelector('.recipe-directions p').textContent= instructions;
+                document.querySelector('.recipe-link a').href= youtube;
 
                 break;
             }
