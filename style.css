@@ -3,9 +3,8 @@
     display:flex;
     align-items: center;
     justify-content: center;
-    background-color:#DCAF8A;
     border-radius: 12px;
-    margin: 40px 25px 20px 25px;
+    margin: 40px 25px 30px 25px;
     width:100%;
     width: auto;
     min-height: 750px;
@@ -43,12 +42,13 @@
 
 /* edit the properties of the image preview div*/
 .img-preview {
-    height: 250px;   
+    height: 250px;
 }
 .img-preview img{
     max-height: 100%;
     min-height: 150px;
     min-width: 100%;
+    max-width: 350px;
     border-radius:12px;
 }
 /* for the button that will initialize selection*/
@@ -58,14 +58,15 @@
     display:flex;
     align-items: center;
     justify-content: center;
-    margin: 5px;
+    margin: 15px;
 }
 .spin-container button{
+    margin: 10px;
     border-radius: 50%;
     background-color: red;
     padding: 10px;
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
     color:white;
     text-transform: uppercase;
     font-size: 19px;
@@ -256,7 +257,7 @@ li {
 }
 
 .ingredients{
-    height: 400px;
+    height: auto;
     padding: 10px;
     box-sizing: border-box;
 }
@@ -264,4 +265,8 @@ li {
 .ingredients ul{
     overflow:hidden;
     text-overflow: ellipsis;
+}
+
+.ingredients.expanded{
+    height: 400px;
 }
