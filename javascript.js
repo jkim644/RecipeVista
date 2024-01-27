@@ -63,6 +63,7 @@ function selectedVegan(){
     veganBtn.style.backgroundColor= "green";
     vegetarianBtn.style.backgroundColor="rgb(65, 216, 65)";
     noDietBtn.style.backgroundColor = "rgb(65, 216, 65)";
+    console.log("I've selected Vegan: " + isVegan);
 }
 function selectedVegetarian(){
     isVegetarian = true;
@@ -71,6 +72,7 @@ function selectedVegetarian(){
     veganBtn.style.backgroundColor = "rgb(65, 216, 65)";
     noDietBtn.style.backgroundColor = "rgb(65, 216, 65)";
     vegetarianBtn.style.backgroundColor= "green";
+    console.log("I've selected Vegetarian: " + isVegetarian);
 }
 function selectedNone(){
     isVegetarian = false;
@@ -79,6 +81,8 @@ function selectedNone(){
     veganBtn.style.backgroundColor = "rgb(65, 216, 65)";
     vegetarianBtn.style.backgroundColor = "rgb(65, 216, 65)";
     noDietBtn.style.backgroundColor= "green";
+    console.log("I've selected No Dietary Restrictions: " + noDiet);
+    
 }
 
 
@@ -90,18 +94,20 @@ noDietBtn.addEventListener('click', selectedNone);
 //shopping list:
 const shoppingList= [];
 let validEntrees =[];
+let invalidEntries = [];
 //get an entree --> valid categories depend on dietary restriction selection:
 if (isVegetarian){
     validEntrees = ["Vegetarian"]
+    invalidEntries =["Beef","Chicken", "Goat", "Lamb","Pork", "Seafood", "Meat"];
 }
-else if(isVegan){
-    validEntrees = ["Vegan"]
-}
+
 else{
     validEntrees= ["Beef", "Chicken", "Goat", "Lamb", "Pasta", "Pork", "Seafood"]; //will not include vegan/vegetarian options. only if selected
+    invalidEntries = [];
 }
 
 let containsAllergen= false;
+let hasInvalidIngredient = false;
 async function getEntree(item1Lock){
     if (item1Lock){
         return;
@@ -121,15 +127,24 @@ async function getEntree(item1Lock){
             let ingredientsList= []; //to add all ingredients to check for allergen
             
             //add all of the recipe's ingredients to ingredients list (don't add empty entries!)
-            for(let i=1;i<=20;i++){
+            for (let i = 1; i <= 20; i++) {
                 const ingredient = data.meals[0][`strIngredient${i}`];
-                if (ingredient !== null && ingredient !=='') {
+                if (ingredient !== null && ingredient !== '' && !invalidEntries.includes(ingredient) ) {
                     ingredientsList.push(ingredient);
                 } else {
                     // Break the loop if there are no more ingredients
                     break;
                 }
+            
+                // Check if any part of the ingredient includes an entry from invalidEntries
+                if (invalidEntries.some(entry => ingredient.toLowerCase().includes(entry.toLowerCase()))) {
+                    hasInvalidIngredient = true;
+                    continue; // Skip to the next iteration if an invalid ingredient is found
+                }
             }
+            
+            
+            
 
             //check if ingredient is an allergen (entered by user)
             if (ingredientsList.includes(allergy)){
@@ -137,7 +152,7 @@ async function getEntree(item1Lock){
             }
 
             //to provide valid recipes that follow the category and do not include allergens:
-            if (validEntrees.includes(category) && containsAllergen === false){
+            if (validEntrees.includes(category) && containsAllergen === false && hasInvalidIngredient == false){
                 //change recipe name:
                 document.getElementById('row-1-title').textContent = recipeName;
 
@@ -147,6 +162,7 @@ async function getEntree(item1Lock){
                 //add ingredients to li: (with add button)
                 console.log(ingredientsList);
                 const ulElement = document.querySelector('ul'); // Assuming you have a <ul> element in your HTML
+                ulElement.innerHTML = ''; //clear previous ingredients
 
                 //cycle through each ingredient and add to unordered list (with added classes to get proper formatting)
                 ingredientsList.forEach(ingredient => {
