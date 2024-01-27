@@ -98,10 +98,6 @@ const shoppingList= [];
 
 let validEntrees= ["Beef", "Chicken", "Goat", "Lamb", "Pasta", "Pork", "Seafood"]; //will not include vegan/vegetarian options. only if selected
 let invalidEntries= [];
-let nonVeganIngredients = ["Chicken","Salmon","Beef","Pork","Bacon","Beef Brisket","Beef Fillet", 
-                            "Beef Gravy","Beef Stock","Butter","Cheddar Cheese", "Cheese","Cheese Curds",
-                          "Chicken Breast","Chicken Breasts","Chicken Legs","Chicken Stock", "Chicken Thighs",
-                        "Chilled Butter","Christmas Pudding","Colby Jack Cheese", "Condensed Milk","Creme Fraiche"]
 
 let containsAllergen= false;
 let hasInvalidIngredient = false;
@@ -127,6 +123,10 @@ async function getEntree(item1Lock){
             //add all of the recipe's ingredients to ingredients list (don't add empty entries!)
             for (let i = 1; i <= 20; i++) {
                 const ingredient = data.meals[0][`strIngredient${i}`];
+                if(i ==1)
+                {
+                    console.log(ingredient);
+                }
                 if (ingredient !== null && ingredient !== '' && !invalidEntries.includes(ingredient) ) {
                     ingredientsList.push(ingredient);
                 } else {
@@ -227,7 +227,7 @@ async function getSide(item2Lock) {
                     break;
                 }
             }
-            
+
             // check if ingredient is an allergen (entered by user)
             if (ingredientsList.includes(allergy)) {
                 containsAllergen = true;
