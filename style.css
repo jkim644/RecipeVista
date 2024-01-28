@@ -406,7 +406,6 @@ li {
 .statement-container {
     margin-top: 40px;
     text-align: center;
-    background-color: #8AD6DC; /* Add the background color */
     padding: 20px; /* Add some padding for better visual appearance */
     border-radius: 12px;
 }
@@ -421,33 +420,17 @@ li {
     color: #555;
 }
 
-/* Contact info section */
-.contact-info-container {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.contact-info {
-    margin-top: 20px;
-    margin-bottom: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.contact-header {
-    font-size: 1.5em;
-    color: #333;
-    margin-bottom: 0;
-}
-
 .contact-info ul {
+    text-align: center;
     list-style-type: none;
     padding: 0;
 }
 
 .contact-info li {
     /*margin: 10px 0;*/
+    display: block;
+    padding: 8px 10px;
+    text-align: center;
     color: #555;
 }
 .cross{
