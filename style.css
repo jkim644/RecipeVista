@@ -4,20 +4,19 @@
     align-items: center;
     justify-content: center;
     border-radius: 12px;
-    margin: 40px 25px 30px 25px;
+    margin: 50px 0;
     width:100%;
-    width: auto;
     min-height: 750px;
 }
 .slot-machine-screen{
     display:grid;
     grid-template-columns: repeat(3,1fr);
     grid-gap:10px;
-    background-color: #8AD6DC;
+    background-color: #323871;
     margin: 10px;
-    padding: 30px 40px;
+    padding: 30px 10px;
     border-radius:12px;
-    width: 85%;   
+    width:95%;   
 }
 
 /* rows hold the food selection, lock is the button to lock in option*/
@@ -36,7 +35,7 @@
 
 /* change the height of grid items based on type*/
 .row-1, .row-2, .row-3{
-    height:auto;
+    height:700px;
 }
 
 
@@ -63,7 +62,6 @@
 .spin-container button{
     margin: 10px;
     border-radius: 50%;
-    background-color: red;
     padding: 10px;
     width: 150px;
     height: 150px;
@@ -74,12 +72,15 @@
     letter-spacing: 0.1cap;
     text-decoration:none;
     cursor:pointer;
-    background: linear-gradient(45deg, #3498db, #217dbb);
+    background: linear-gradient(45deg, #323871, #217dbb);
     box-shadow: 3px 3px 5px #888888, -3px -3px 5px #fff;
 }
-.main-title h1{
-    font-size: 42px;
-    display: inline-block;
+
+.main-title{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
 }
 
 #logo_img {
@@ -93,13 +94,15 @@
 
 .dropbtn {
     background-color: #323871;
+    position: absolute;
+    top: 30px;
+    right: 30px;
     color: white;
     padding: 16px;
     font-size: 16px;
     border: none;
     float:left;
-    margin-top: 68px;
-    margin-right: 70px;
+    border-radius:12px;
   }
   
   .dropdown {
@@ -110,9 +113,11 @@
   
   .dropdown-content {
     display: none;
-    position:inherit;
+    position:absolute;
+    top:80px;
+    right:40px;
     background-color: #f1f1f1;
-    min-width: 100px;
+    min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
@@ -165,6 +170,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    border-radius:12px;
 }
 .lock-1, .lock-2, .lock-3{
     flex-direction: row;
@@ -188,7 +195,14 @@
 }
 
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 850px) {
+    body{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
     .slot-machine-screen {
         grid-template-columns: 1fr; /* Display as a single column */
         width: 90%; 
@@ -209,6 +223,15 @@
     .vegan, .vegetarian{
         margin: 3px;
     }
+    #logo_img {
+        align-items: center;
+        width: 80%;
+        height: 100%;
+        flex:1;
+        margin-top: 25px;
+        margin-left: 20px;
+        margin-bottom: 15px;
+    }
   }
 
   /* for the recipe preview window*/
@@ -218,7 +241,7 @@
     left:50%;
     transform: translate(-50%, -50%);
     color:#fff;
-    background-color:#217dbb;
+    background-color:#323871;
     border-radius: 1rem;
     width: 90%;
     height:90%;

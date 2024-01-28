@@ -21,6 +21,19 @@ let isVegan = false;
 let noDiet = false;
 let hasAllergy= false;
 let allergy =[];
+let veganList = [
+    'chicken', 'chicken breast', 'chicken breasts', 'chicken legs', 'chicken stock', 'chicken stock cube', 'chicken stock concentrate',
+    'beef',"beef brisket","beef fillet", "beef gravy", "beef stock", "beef kidney", "beef shin", "beef stock concentrate", 'chicken thigs', 'ground beef', 'ground pork',
+    'pork chops','pork', "fish","salmon","fish sauce", "thai fish sauce","white fish","white fish fillets","monkfish", "fish stock","red snapper", "smoked salmon","anchovy fillet","herring","sardines",
+    'egg','eggs','egg white', 'egg yolks','flax eggs','free-range egg, beaten',"free-range eggs, beaten", 'lamb',
+    'heavy cream', 'cheese slices', 'milk','cheddar cheese','cheese', 'cheese curds','colby jack cheese','cubed feta cheese','gouda cheese','monterery jack cheese','parmesan cheese','parmesan','shredded mexican cheese','shredded monterey jack cheese','cream cheese','stilton cheese','goats cheese','condensed milk','milk','semi-skimmed milk','whole milk','.butter','brie','single cream', 'double cream'
+];
+
+let vegetarianList= [
+    'chicken', 'chicken breast', 'chicken breasts', 'chicken legs', 'chicken stock', 'chicken stock cube', 'chicken stock concentrate',
+    'beef',"beef brisket","beef fillet", "beef gravy", "beef stock", "beef kidney", "beef shin", "beef stock concentrate",
+    'pork chops','pork', "fish","salmon","fish sauce", "thai fish sauce","white fish","white fish fillets","monkfish", "fish stock","red snapper", "smoked salmon","anchovy fillet","herring","sardines"
+]
 
 //for getting recipes
 let item1= [];
@@ -47,8 +60,8 @@ function enterAllergy(){
     if (allergen.trim() !== ''){
         allergyBox.value=''; //clears input box
         addToAllergyList(allergen);
-        alert("Allergy Added");
-        console.log("Allergen: " + allergy);
+        //alert("Allergy Added");
+        //console.log("Allergen: " + allergy);
         hasAllergy = true;
     }
      
@@ -56,30 +69,30 @@ function enterAllergy(){
 function addToAllergyList(allergen){
     const allergenLower = allergen.toLowerCase();
     if (allergenLower === 'chicken'){
-        allergy.push('chicken breast', 'chicken breasts', 'chicken legs', 'chicken stock', 'chicken stock cube', 'chicken stock concentrate');
+        allergy.push('chicken', 'chicken breast', 'chicken breasts', 'chicken legs', 'chicken stock', 'chicken stock cube', 'chicken stock concentrate', 'chicken thigs');
     }
     else if (allergenLower == 'beef'){
-        allergy.push("beef brisket","beef fillet", "beef gravy", "beef stock", "beef kidney", "beef shin", "beef stock concentrate");
+        allergy.push('beef',"beef brisket","beef fillet", "beef gravy", "beef stock", "beef kidney", "beef shin", "beef stock concentrate",'ground beef');
     }
     else if(allergenLower == 'pork'){
-        allergy.push('pork chops')
+        allergy.push('pork chops','pork','ground pork');
     }
     else if(allergenLower == 'citrus' || allergenLower=="orange" || allergenLower =="lemon" || allergenLower =="lime"){
-        allergy.push("lemon", "lemon juice", "lemon zest", "lemons", "orange", "orange zest","orange blossom water","lime");
+        allergy.push("citrus","lemon", "lemon juice", "lemon zest", "lemons", "orange", "orange zest","orange blossom water","lime");
     }
     else if(allergenLower == 'fish'){
-        allergy.push("salmon","fish sauce", "thai fish sauce","white fish","white fish fillets","monkfish", "fish stock","red snapper", "smoked salmon","anchovy fillet","herring","sardines");
+        allergy.push("fish","salmon","fish sauce", "thai fish sauce","white fish","white fish fillets","monkfish", "fish stock","red snapper", "smoked salmon","anchovy fillet","herring","sardines");
     }
     else if(allergenLower == 'egg'){
-        allergy.push('egg','eggs','egg white', 'egg yolks','flax eggs','Free-range Egg, Beaten',"Free-range Eggs, Beaten")
+        allergy.push('egg','eggs','egg white', 'egg yolks','flax eggs','free-range egg, beaten',"free-range eggs, beaten")
     }
     else if(allergenLower == 'milk'){
-        allergy.push('cheese slices', 'milk','cheddar cheese','cheese', 'cheese curds','colby jack cheese','cubed feta cheese','gouda cheese','monterery jack cheese','parmesan cheese','shredded mexican cheese','shredded monterey jack cheese','cream cheese','stilton cheese','goats cheese','condensed milk','milk','semi-skimmed milk','whole milk','.butter','brie','single cream', 'double cream');
+        allergy.push('heavy cream', 'cheese slices', 'milk','cheddar cheese','cheese', 'cheese curds','colby jack cheese','cubed feta cheese','gouda cheese','monterery jack cheese','parmesan cheese','parmesan','shredded mexican cheese','shredded monterey jack cheese','cream cheese','stilton cheese','goats cheese','condensed milk','milk','semi-skimmed milk','whole milk','butter','brie','single cream', 'double cream');
     }
     else if(allergenLower == 'nuts' || allergenLower == 'nut' || allergenLower =='tree nuts'){
-        allergy.push("peanut butter", "peanut oil","peanuts", "peanut cookies", "peanut brittle", "almonds","almond milk","almond extract","flaked almonds","ground almonds", "almonds", "pine nuts","walnuts", "pecan nuts","chestnuts","hazlenuts","cashew nuts");
+        allergy.push('nuts', 'nut',"peanut butter", "peanut oil","peanuts", "peanut cookies", "peanut brittle", "almonds","almond milk","almond extract","flaked almonds","ground almonds", "almonds", "pine nuts","walnuts", "pecan nuts","chestnuts","hazlenuts","cashew nuts");
     }
-    console.log("I've added " + allergenLower + " to the allergy array. This is array: " + allergy);
+    //console.log("I've added " + allergenLower + " to the allergy array. This is array: " + allergy);
 }
 
 function selectedVegan(){
@@ -126,6 +139,10 @@ let invalidEntries= [];
 
 let containsAllergen= false;
 let hasInvalidIngredient = false;
+
+//on initial load up:
+getEntree(item1Lock); getSide(item2Lock); getSide2(item3Lock);
+
 async function getEntree(item1Lock){
     if (item1Lock){
         console.log("Entree is locked. Will not randomly gather new recipe");
@@ -133,6 +150,7 @@ async function getEntree(item1Lock){
     }
     while(true){
         containsAllergen= false; //reset
+        hasInvalidIngredient = false;
         try{
             const response= await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
             const data= await response.json(); //an object that has our meal data from api
@@ -169,14 +187,15 @@ async function getEntree(item1Lock){
 
             //check if ingredient is an allergen (entered by user)
            // Check if any ingredient is an allergen (entered by user)
-            containsAllergen = false;
+            
             for (let i = 0; i < ingredientsList.length; i++) {
                 const ingredient = ingredientsList[i].toLowerCase();
                 // Check if any ingredient is an allergen (entered by user)
                 containsAllergen = allergy.includes(ingredient);
+                hasInvalidIngredient = veganList.includes(ingredient);
 
                 // Check if any allergen is in the ingredientsList
-                if (containsAllergen) {
+                if (containsAllergen || hasInvalidIngredient) {
                     break;
                 }
 
@@ -309,6 +328,7 @@ async function getSide(item2Lock) {
                     ulElement.appendChild(liElement);
                 });
 
+                
                 break;
             }
 
