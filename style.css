@@ -218,7 +218,6 @@
         display:flex;
         align-items: center;
         justify-content:center;
-        flex-direction: column;
     }
     .vegan, .vegetarian, .none{
         margin: 3px;
@@ -233,6 +232,21 @@
         margin-bottom: 15px;
     }
   }
+@media screen and (max-width: 650px) {
+    .allergy-container{
+        display:flex;
+        align-items: center;
+        justify-content:center;
+        flex-direction: column;
+    }
+    .diet-container{
+        flex-wrap:wrap;
+        margin: 5px;
+    }
+    .none {
+        display:none;
+    }
+}
 
   /* for the recipe preview window*/
 .recipe-details{
