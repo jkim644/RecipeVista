@@ -133,7 +133,7 @@
   
   .dropdown:hover .dropdown-content {display: block;}
   
-  .dropdown:hover .dropbtn {background-color: #3e8e41;}
+  .dropdown:hover .dropbtn {background-color: #F98D67;}
 
 .allergy-container, .diet-container{
     display:flex;
@@ -160,7 +160,15 @@
     background-color: #F98D67;
     box-shadow: 3px 3px 5px #888888, -3px -3px 5px #fff;
     border:none;
+    
 }
+
+.vegan:hover .btn-vegan {background-color: #323871;}
+.vegetarian:hover .btn-vegetarian {background-color: #323871;}
+.none:hover .btn-none {background-color: #323871;}
+
+.allergy-container .btn-allergy:hover {background-color: #29ae39;}
+
 .btn-allergy{
     background-color: #217dbb;
 }
