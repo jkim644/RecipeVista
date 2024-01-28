@@ -106,27 +106,27 @@ function selectedVegan(){
     isVegan= true;
     isVegetarian = false;
     noDiet = false;
-    veganBtn.style.backgroundColor= "green";
-    vegetarianBtn.style.backgroundColor="rgb(65, 216, 65)";
-    noDietBtn.style.backgroundColor = "rgb(65, 216, 65)";
+    veganBtn.style.backgroundColor= "#323871";
+    vegetarianBtn.style.backgroundColor="#F98D67";
+    noDietBtn.style.backgroundColor = "#F98D67";
     console.log("I've selected Vegan: " + isVegan);
 }
 function selectedVegetarian(){
     isVegetarian = true;
     isVegan = false;
     noDiet = false;
-    veganBtn.style.backgroundColor = "rgb(65, 216, 65)";
-    noDietBtn.style.backgroundColor = "rgb(65, 216, 65)";
-    vegetarianBtn.style.backgroundColor= "green";
+    veganBtn.style.backgroundColor= "#F98D67";
+    vegetarianBtn.style.backgroundColor="#323871";
+    noDietBtn.style.backgroundColor = "#F98D67";
     console.log("I've selected Vegetarian: " + isVegetarian);
 }
 function selectedNone(){
     isVegetarian = false;
     isVegan = false;
     noDiet = true;
-    veganBtn.style.backgroundColor = "rgb(65, 216, 65)";
-    vegetarianBtn.style.backgroundColor = "rgb(65, 216, 65)";
-    noDietBtn.style.backgroundColor= "green";
+    veganBtn.style.backgroundColor= "#F98D67";
+    vegetarianBtn.style.backgroundColor="#F98D67";
+    noDietBtn.style.backgroundColor = "#323871";
     console.log("I've selected No Dietary Restrictions: " + noDiet);
     
 }
