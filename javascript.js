@@ -232,7 +232,8 @@ async function getEntree(item1Lock){
                     // Add click event listener --> user wants to add to shopping cart
                     liElement.addEventListener('click', () => {
                         addToList(ingredient, 0);
-                        alert(`Added ${ingredient} to your shopping list!`);
+                        var alert = document.getElementById("audio");
+                        alert.play();
                     });
 
                     // Append the li element to your existing ul element
@@ -328,7 +329,8 @@ async function getSide(item2Lock) {
                     // Add click event listener --> user wants to add to shopping cart
                     liElement.addEventListener('click', () => {
                         addToList(ingredient, 0);
-                        alert(`Added ${ingredient} to your shopping list!`);
+                        var alert = document.getElementById("audio");
+                        alert.play();
                     });
 
                     // Append the li element to your existing ul element
@@ -415,7 +417,8 @@ async function getSide2(item3Lock) {
                     // Add click event listener --> user wants to add to shopping cart
                     liElement.addEventListener('click', () => {
                         addToList(ingredient, 0);
-                        alert(`Added ${ingredient} to your shopping list!`);
+                        var alert = document.getElementById("audio");
+                        alert.play();
                     });
 
                     // Append the li element to your existing ul element
