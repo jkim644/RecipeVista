@@ -1,174 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="icon" type="image/x-icon" href="photo/favicon.png" />
-    <title>RecipeVista</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="UTF-8" />
-    <link href="style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <div class="main-container">
-      <div class="main-title">
-        <div>
-          <a href="index.html">
-            <img src="photo/logo.png" alt="RecipeVista" id="logo_img"></a>
-        </div>
-        <div class="dropdown">
-          <button class="dropbtn"><ion-icon name="menu-outline"></ion-icon></button>
-          <div class="dropdown-content">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-          </div>
-        </div>
-      </div>
-      <div class="diet-main-container">
-        <div class="dietary-title">
-          <h2>Enter Dietary Restrictions:</h2>
-        </div>
-        <div class="allergy-container">
-          <div class="title">
-            <h3>Allergies:</h3>
-          </div>
-          <div class="text-input">
-            <input
-              type="text"
-              class="allergy-txt"
-              placeholder="Enter Allergy Here"
-              autofocus
-            />
-          </div>
-          <div class="submit-allergy">
-            <button class="btn-allergy" onclick="enterAllergy()">Add Allergy</button>
-          </div>
-        </div>
-        <div class="diet-container">
-          <div class="title">
-            <h3>Dietary Restriction:</h3>
-          </div>
-          <div class="vegan">
-            <button class="btn-vegan" onclick="selectedVegan()">Vegan</button>
-          </div>
-          <div class="vegetarian">
-            <button class="btn-vegetarian" onclick="selectedVegetarian()">
-              Vegetarian
-            </button>
-          </div>
-          <div class="none">
-            <button class="btn-none" onclick="selectedNone()">None</button>
-          </div>
-        </div>
-      </div>
-      <div class="slot-machine-body">
-        <div class="slot-machine-screen">
-          <div class="row-1">
-            <div class="title">
-              <h1 id="row-1-title">Main Entree</h1>
-              <h2 id="row-1-dish"></h2>
-            </div>
-            <div class="img-preview">
-              <img
-                src="https://lh3.googleusercontent.com/proxy/UPaTIzPl-clPP6ZPm9yITV4k-xIyuu9xEFVfzS8vuVeku2ijtgkiUwyW7xSnIGmee1laWFI7NjbkMNcOrW1IbP5sTN51a7qVijTGuc0xxMP3l5sanwSLq9mm3w0W"
-              />
-            </div>
-            <div class="ingredients">
-              <div class="ing-title"><h2>Ingredients</h2></div>
-              <ul></ul>
-            </div>
-            <div class="lock-1">
-              <button class="btn-lock" id="btn-1" onclick="lockEntree()">
-                <ion-icon name="heart-outline"></ion-icon> Love
-              </button>
-              <a class="btn-recipe" id="recipe-1" href="#">Get Recipe</a>
-            </div>
-          </div>
-          <div class="row-2">
-            <div class="title">
-              <h1 id="row-2-title">Side Dish</h1>
-            </div>
-            <div class="img-preview">
-              <img
-                src="https://lh3.googleusercontent.com/proxy/UPaTIzPl-clPP6ZPm9yITV4k-xIyuu9xEFVfzS8vuVeku2ijtgkiUwyW7xSnIGmee1laWFI7NjbkMNcOrW1IbP5sTN51a7qVijTGuc0xxMP3l5sanwSLq9mm3w0W"
-              />
-            </div>
-            <div class="ingredients">
-              <div class="ing-title"><h2>Ingredients</h2></div>
-              <ul></ul>
-            </div>
-            <div class="lock-2">
-              <button class="btn-lock" id="btn-2">
-                <ion-icon name="heart-outline"></ion-icon> Love
-              </button>
-              <a class="btn-recipe" id="recipe-2" href="#">Get Recipe</a>
-            </div>
-          </div>
-          <div class="row-3">
-            <div class="title">
-              <h1 id="row-3-title">Desserts</h1>
-            </div>
-            <div class="img-preview">
-              <img
-                src="https://lh3.googleusercontent.com/proxy/UPaTIzPl-clPP6ZPm9yITV4k-xIyuu9xEFVfzS8vuVeku2ijtgkiUwyW7xSnIGmee1laWFI7NjbkMNcOrW1IbP5sTN51a7qVijTGuc0xxMP3l5sanwSLq9mm3w0W"
-              />
-            </div>
-            <div class="ingredients">
-              <div class="ing-title"><h2>Ingredients</h2></div>
-              <ul></ul>
-            </div>
 
-            <div class="lock-3">
-              <button class="btn-lock" id="btn-3">
-                <ion-icon name="heart-outline"></ion-icon> Love
-              </button>
-              <a class="btn-recipe" id="recipe-3" href="#">Get Recipe</a>
-            </div>
-          </div>
-        </div>
-        <!--slot machine screen end-->
-      </div>
-      <!--slot machine body end-->
-      <div class="spin-container">
-        <div class="spin">
-          <button class="btn-spin">Generate</button>
-        </div>
-      </div>
+<head>
+  <link rel="icon" type="image/x-icon" href="photo/favicon.png" />
+  <title>RecipeVista</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <link href="style.css" rel="stylesheet" />
+</head>
 
-      <!-- show recipe details-->
-      <div class="recipe-details">
-        <button class="btn btn-close" id="btn-close">
-          <ion-icon name="close-outline"></ion-icon>
-        </button>
-        <div class="recipe-content">
-          <h2 class="recipe-title">Name PlaceHolder</h2>
-          <p class="recipe-category">Category Name</p>
-          <div class="recipe-directions">
-            <h3>Directions:</h3>
-            <p>Directions here</p>
-          </div>
-          <div class="recipe-link">
-            <a href="#" target="_blank">Watch Video</a>
-          </div>
-        </div>
+<body>
+  <div class="main-container">
+    <div class="main-title">
+      <div>
+        <a href="index.html">
+          <img src="photo/logo.png" alt="RecipeVista" id="logo_img"></a>
       </div>
-
-      <div class="grocery-container">
-        <div class="grocery-title">
-          <h1 class="grocery-margin">Grocery List:</h1>
-        </div>
-        <div class="grocery-items">
-          <ul></ul>
+      <div class="dropdown">
+        <button class="dropbtn"><ion-icon name="menu-outline"></ion-icon></button>
+        <div class="dropdown-content">
+          <a href="index.html">Home</a>
+          <a href="recipes.html">Saved</a>
+          <a href="about.html">About</a>
         </div>
       </div>
     </div>
-    <!--main container-->
-    <script src="javascript.js"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
-  </body>
+    <div class="diet-main-container">
+      <div class="dietary-title">
+        <h2>Enter Dietary Restrictions:</h2>
+      </div>
+      <div class="allergy-container">
+        <div class="title">
+          <h3>Allergies:</h3>
+        </div>
+        <div class="text-input">
+          <input type="text" class="allergy-txt" placeholder="Enter Allergy Here" autofocus />
+        </div>
+        <div class="submit-allergy">
+          <button class="btn-allergy" onclick="enterAllergy()">Add Allergy</button>
+        </div>
+      </div>
+      <div class="diet-container">
+        <div class="title">
+          <h3>Dietary Restriction:</h3>
+        </div>
+        <div class="vegan">
+          <button class="btn-vegan" onclick="selectedVegan()">Vegan</button>
+        </div>
+        <div class="vegetarian">
+          <button class="btn-vegetarian" onclick="selectedVegetarian()">
+            Vegetarian
+          </button>
+        </div>
+        <div class="none">
+          <button class="btn-none" onclick="selectedNone()">None</button>
+        </div>
+      </div>
+    </div>
+    <div class="slot-machine-body">
+      <div class="slot-machine-screen">
+        <div class="row-1">
+          <div class="title">
+            <h1 id="row-1-title">Main Entree</h1>
+            <h2 id="row-1-dish"></h2>
+          </div>
+          <div class="img-preview">
+            <img
+              src="https://lh3.googleusercontent.com/proxy/UPaTIzPl-clPP6ZPm9yITV4k-xIyuu9xEFVfzS8vuVeku2ijtgkiUwyW7xSnIGmee1laWFI7NjbkMNcOrW1IbP5sTN51a7qVijTGuc0xxMP3l5sanwSLq9mm3w0W" />
+          </div>
+          <div class="ingredients">
+            <div class="ing-title">
+              <h2>Ingredients</h2>
+            </div>
+            <ul></ul>
+          </div>
+          <div class="lock-1">
+            <button class="btn-lock" id="btn-1" onclick="lockEntree()">
+              <ion-icon name="heart-outline"></ion-icon> Love
+            </button>
+            <a class="btn-recipe" id="recipe-1" href="#">Get Recipe</a>
+          </div>
+        </div>
+        <div class="row-2">
+          <div class="title">
+            <h1 id="row-2-title">Side Dish</h1>
+          </div>
+          <div class="img-preview">
+            <img
+              src="https://lh3.googleusercontent.com/proxy/UPaTIzPl-clPP6ZPm9yITV4k-xIyuu9xEFVfzS8vuVeku2ijtgkiUwyW7xSnIGmee1laWFI7NjbkMNcOrW1IbP5sTN51a7qVijTGuc0xxMP3l5sanwSLq9mm3w0W" />
+          </div>
+          <div class="ingredients">
+            <div class="ing-title">
+              <h2>Ingredients</h2>
+            </div>
+            <ul></ul>
+          </div>
+          <div class="lock-2">
+            <button class="btn-lock" id="btn-2">
+              <ion-icon name="heart-outline"></ion-icon> Love
+            </button>
+            <a class="btn-recipe" id="recipe-2" href="#">Get Recipe</a>
+          </div>
+        </div>
+        <div class="row-3">
+          <div class="title">
+            <h1 id="row-3-title">Desserts</h1>
+          </div>
+          <div class="img-preview">
+            <img
+              src="https://lh3.googleusercontent.com/proxy/UPaTIzPl-clPP6ZPm9yITV4k-xIyuu9xEFVfzS8vuVeku2ijtgkiUwyW7xSnIGmee1laWFI7NjbkMNcOrW1IbP5sTN51a7qVijTGuc0xxMP3l5sanwSLq9mm3w0W" />
+          </div>
+          <div class="ingredients">
+            <div class="ing-title">
+              <h2>Ingredients</h2>
+            </div>
+            <ul></ul>
+          </div>
+
+          <div class="lock-3">
+            <button class="btn-lock" id="btn-3">
+              <ion-icon name="heart-outline"></ion-icon> Love
+            </button>
+            <a class="btn-recipe" id="recipe-3" href="#">Get Recipe</a>
+          </div>
+        </div>
+      </div>
+      <!--slot machine screen end-->
+    </div>
+    <!--slot machine body end-->
+    <div class="spin-container">
+      <div class="spin">
+        <button class="btn-spin">Generate</button>
+      </div>
+    </div>
+
+    <!-- show recipe details-->
+    <div class="recipe-details">
+      <button class="btn btn-close" id="btn-close">
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+      <div class="recipe-content">
+        <h2 class="recipe-title">Name PlaceHolder</h2>
+        <p class="recipe-category">Category Name</p>
+        <div class="recipe-directions">
+          <h3>Directions:</h3>
+          <p>Directions here</p>
+        </div>
+        <div class="recipe-link">
+          <a href="#" target="_blank">Watch Video</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="grocery-container">
+      <div class="grocery-title">
+        <h1 class="grocery-margin">Grocery List:</h1>
+      </div>
+      <div class="grocery-items">
+        <ul></ul>
+      </div>
+    </div>
+  </div>
+  <!--main container-->
+  <script src="javascript.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
 </html>
