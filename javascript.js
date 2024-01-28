@@ -461,9 +461,6 @@ function retrieveItems() {
 
 function populate(data) {
     for (datum of data) {
-        // there is only one pair of key, value per item object
-        // this for loop is just to retrieve them
-        // for (var [key,value] of Object.entries(datum)) { }
         makeShopList(datum);
     }
 }
@@ -480,18 +477,30 @@ function makeShopList(ingredient) {
     liElement.insertBefore(checkBox,liElement.firstChild);
 
     checkBox.addEventListener('click', function(){ //has checkbox been clicked?
-                strikethrough(checkBox); //pass in check box so usable in strikethrough function
+                boxChecked(checkBox); //pass in check box so usable in strikethrough function
             });
 }
 
-function strikethrough(checkBox){
+function boxChecked(checkBox){
+    const deleteBtn = document.getElementById('deleteBtn');
     if (checkBox.checked){ 
         checkBox.parentElement.classList.add('cross'); //strikethrough and font color change when clicked
+        deleteBtn.style.display="block";
+        deleteBtn.addEventListener('click', function(){ //has checkbox been clicked?
+            removeItem(checkBox.parentElement.textContent, checkBox.parentElement);
+        });
     }
     else{
         checkBox.parentElement.classList.remove('cross'); //removes text deco if unclicked
     }
     
+}
+
+function removeItem(ingredient, parent){
+    const deleteBtn = document.getElementById('deleteBtn');
+    localStorage.removeItem(ingredient);
+    parent.remove();
+    deleteBtn.style.display="none";
 }
 
 const recipeBtn= document.querySelector('.btn-recipe');
