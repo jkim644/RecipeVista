@@ -1,3 +1,10 @@
+window.addEventListener("load", setup);
+
+function setup() {
+    const data = retrieveItems();
+    populate(data);
+}
+
 //buttons
 const lock1Btn = document.getElementById('btn-1');
 const lock2Btn = document.getElementById('btn-2');
@@ -224,7 +231,7 @@ async function getEntree(item1Lock){
 
                     // Add click event listener --> user wants to add to shopping cart
                     liElement.addEventListener('click', () => {
-                        addToShoppingList(ingredient);
+                        addToList(ingredient, 0);
                         alert(`Added ${ingredient} to your shopping list!`);
                     });
 
@@ -320,7 +327,7 @@ async function getSide(item2Lock) {
 
                     // Add click event listener --> user wants to add to shopping cart
                     liElement.addEventListener('click', () => {
-                        addToShoppingList(ingredient);
+                        addToList(ingredient, 0);
                         alert(`Added ${ingredient} to your shopping list!`);
                     });
 
@@ -407,7 +414,7 @@ async function getSide2(item3Lock) {
 
                     // Add click event listener --> user wants to add to shopping cart
                     liElement.addEventListener('click', () => {
-                        addToShoppingList(ingredient);
+                        addToList(ingredient, 0);
                         alert(`Added ${ingredient} to your shopping list!`);
                     });
 
@@ -433,14 +440,36 @@ function selectMenu(){
     getSide2(item3Lock);
 }
 
-
-function addToShoppingList(ingredient){
-    const ulElement = document.querySelector('.grocery-items ul');
-    if(shoppingList.includes(ingredient))
-    {
+function addToList(ingredient, value) {
+    if (shoppingList.includes(ingredient)) {
         return;
     }
     shoppingList.push(ingredient);
+    localStorage.setItem(ingredient, value);
+    makeShopList(ingredient);
+}
+
+function retrieveItems() {
+    const data = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        data.push(key);
+    }
+    return data;
+
+}
+
+function populate(data) {
+    for (datum of data) {
+        // there is only one pair of key, value per item object
+        // this for loop is just to retrieve them
+        // for (var [key,value] of Object.entries(datum)) { }
+        makeShopList(datum);
+    }
+}
+
+function makeShopList(ingredient) {
+    const ulElement = document.querySelector('.grocery-items ul');
     const liElement = document.createElement('li');
     liElement.textContent = ingredient;
     const checkBox = document.createElement('input');
@@ -451,8 +480,8 @@ function addToShoppingList(ingredient){
     liElement.insertBefore(checkBox,liElement.firstChild);
 
     checkBox.addEventListener('click', function(){ //has checkbox been clicked?
-        strikethrough(checkBox); //pass in check box so usable in strikethrough function
-    });
+                strikethrough(checkBox); //pass in check box so usable in strikethrough function
+            });
 }
 
 function strikethrough(checkBox){
