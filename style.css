@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Amaranth';
+    src: url('photo/Amaranth-Regular.ttf') format('truetype');
+}
+
+body{
+    /*amaranth*/
+    font-family: 'Quicksand', serif;
+}
 
 .slot-machine-body{
     display:flex;
